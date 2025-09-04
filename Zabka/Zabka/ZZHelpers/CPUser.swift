@@ -1,3 +1,10 @@
+//
+//  CPUser.swift
+//  Zabka
+//
+//
+
+
 import SwiftUI
 
 class CPUser: ObservableObject {

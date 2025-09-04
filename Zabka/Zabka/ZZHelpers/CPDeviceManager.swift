@@ -1,3 +1,10 @@
+//
+//  CPDeviceManager.swift
+//  Zabka
+//
+//
+
+
 import UIKit
 
 class CPDeviceManager {
