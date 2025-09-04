@@ -1,13 +1,20 @@
+//
+//  CPLoaderView.swift
+//  Zabka
+//
+//
+
+
 import SwiftUI
 
-struct CPLoaderView: View {
+struct ZZLoaderView: View {
     @State private var scale: CGFloat = 1.0
     @State private var progress: CGFloat = 0.0
     @State private var timer: Timer?
     var body: some View {
         ZStack {
             ZStack {
-                Image(.loaderLogoCP)
+                Image(.loaderLogoZZ)
                     .resizable()
                     .ignoresSafeArea()
                     .scaledToFill()
@@ -18,7 +25,7 @@ struct CPLoaderView: View {
             
             VStack(spacing: 0) {
                 
-                Image(.loaderLogoCP)
+                Image(.loaderLogoZZ)
                     .resizable()
                     .scaledToFit()
                     .frame(height: 200)
@@ -74,5 +81,5 @@ struct CPLoaderView: View {
 }
 
 #Preview {
-    CPLoaderView()
+    ZZLoaderView()
 }

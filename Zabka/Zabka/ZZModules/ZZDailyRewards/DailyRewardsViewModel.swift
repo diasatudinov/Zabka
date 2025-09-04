@@ -1,3 +1,10 @@
+//
+//  DailyRewardsViewModel.swift
+//  Zabka
+//
+//
+
+
 import SwiftUI
 import Combine
 
