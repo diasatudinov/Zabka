@@ -2,7 +2,6 @@
 //  CPShopViewModel.swift
 //  Zabka
 //
-//  Created by Dias Atudinov on 04.09.2025.
 //
 
 
@@ -12,18 +11,10 @@ import SwiftUI
 final class CPShopViewModel: ObservableObject {
     // MARK: – Shop catalogues
     @Published var shopBgItems: [JGItem] = [
-        JGItem(name: "bg1", image: "bgImage1CP", icon: "gameBgIcon1CP", text: "gameBgText1CP", price: 100),
-        JGItem(name: "bg2", image: "bgImage2CP", icon: "gameBgIcon2CP", text: "gameBgText2CP", price: 100),
-        JGItem(name: "bg3", image: "bgImage3CP", icon: "gameBgIcon3CP", text: "gameBgText3CP", price: 100),
-        JGItem(name: "bg4", image: "bgImage4CP", icon: "gameBgIcon4CP", text: "gameBgText4CP", price: 100),
-
-    ]
-    
-    @Published var shopSkinItems: [JGItem] = [
-        JGItem(name: "skin1", image: "skinImage1CP", icon: "skinIcon1CP", text: "skinText1CP", price: 100),
-        JGItem(name: "skin2", image: "skinImage2CP", icon: "skinIcon2CP", text: "skinText2CP", price: 100),
-        JGItem(name: "skin3", image: "skinImage3CP", icon: "skinIcon3CP", text: "skinText3CP", price: 100),
-        JGItem(name: "skin4", image: "skinImage4CP", icon: "skinIcon4CP", text: "skinText4CP", price: 100),
+        JGItem(name: "bg1", image: "bgImage1ZZ", icon: "gameBgIcon1ZZ", text: "gameBgText1ZZ", price: 100),
+        JGItem(name: "bg2", image: "bgImage2ZZ", icon: "gameBgIcon2ZZ", text: "gameBgText2ZZ", price: 100),
+        JGItem(name: "bg3", image: "bgImage3ZZ", icon: "gameBgIcon3ZZ", text: "gameBgText3ZZ", price: 100),
+        JGItem(name: "bg4", image: "bgImage4ZZ", icon: "gameBgIcon4ZZ", text: "gameBgText4ZZ", price: 100),
 
     ]
     
@@ -33,34 +24,22 @@ final class CPShopViewModel: ObservableObject {
     ] {
         didSet { saveBoughtBg() }
     }
-
-    @Published var boughtSkinItems: [JGItem] = [
-        JGItem(name: "skin1", image: "skinImage1CP", icon: "skinIcon1CP", text: "skinText1CP", price: 100),
-    ] {
-        didSet { saveBoughtSkins() }
-    }
     
     // MARK: – Current selections
     @Published var currentBgItem: JGItem? {
         didSet { saveCurrentBg() }
     }
-    @Published var currentSkinItem: JGItem? {
-        didSet { saveCurrentSkin() }
-    }
+    
     
     // MARK: – UserDefaults keys
     private let bgKey            = "currentBgJG1"
     private let boughtBgKey      = "boughtBgJG1"
-    private let skinKey          = "currentSkinJG1"
-    private let boughtSkinKey    = "boughtSkinJG1"
     
     // MARK: – Init
     init() {
         loadCurrentBg()
         loadBoughtBg()
                 
-        loadCurrentSkin()
-        loadBoughtSkins()
     }
     
     // MARK: – Save / Load Backgrounds
@@ -89,41 +68,14 @@ final class CPShopViewModel: ObservableObject {
         }
     }
     
-    // MARK: – Save / Load Skins
-    private func saveCurrentSkin() {
-        guard let item = currentSkinItem,
-              let data = try? JSONEncoder().encode(item)
-        else { return }
-        UserDefaults.standard.set(data, forKey: skinKey)
-    }
-    private func loadCurrentSkin() {
-        if let data = UserDefaults.standard.data(forKey: skinKey),
-           let item = try? JSONDecoder().decode(JGItem.self, from: data) {
-            currentSkinItem = item
-        } else {
-            currentSkinItem = shopSkinItems.first
-        }
-    }
-    private func saveBoughtSkins() {
-        guard let data = try? JSONEncoder().encode(boughtSkinItems) else { return }
-        UserDefaults.standard.set(data, forKey: boughtSkinKey)
-    }
-    private func loadBoughtSkins() {
-        if let data = UserDefaults.standard.data(forKey: boughtSkinKey),
-           let items = try? JSONDecoder().decode([JGItem].self, from: data) {
-            boughtSkinItems = items
-        }
-    }
-    
     // MARK: – Example buy action
     func buy(_ item: JGItem, category: JGItemCategory) {
         switch category {
         case .background:
             guard !boughtBgItems.contains(item) else { return }
             boughtBgItems.append(item)
-        case .skin:
-            guard !boughtSkinItems.contains(item) else { return }
-            boughtSkinItems.append(item)
+        case .skin: break
+           
         }
     }
     
@@ -132,7 +84,7 @@ final class CPShopViewModel: ObservableObject {
         case .background:
             return boughtBgItems.contains(where: { $0.name == item.name })
         case .skin:
-            return boughtSkinItems.contains(where: { $0.name == item.name })
+            return false
         }
     }
 
@@ -149,16 +101,8 @@ final class CPShopViewModel: ObservableObject {
                 user.minusUserMoney(for: item.price)
                 buy(item, category: .background)
             }
-        case .skin:
-            if isPurchased(item, category: .skin) {
-                currentSkinItem = item
-            } else {
-                guard user.money >= item.price else {
-                    return
-                }
-                user.minusUserMoney(for: item.price)
-                buy(item, category: .skin)
-            }
+        case .skin: break
+           
         }
     }
     
@@ -176,9 +120,7 @@ final class CPShopViewModel: ObservableObject {
             return true
             
         case .skin:
-            guard let currentItem = currentSkinItem, currentItem.name == item.name else {
-                return false
-            }
+            
             
             return true
         }
