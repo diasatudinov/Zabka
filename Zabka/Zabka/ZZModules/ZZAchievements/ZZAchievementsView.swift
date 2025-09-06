@@ -1,0 +1,18 @@
+//
+//  ZZAchievementsView.swift
+//  Zabka
+//
+//  Created by Dias Atudinov on 06.09.2025.
+//
+
+import SwiftUI
+
+struct ZZAchievementsView: View {
+    var body: some View {
+        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    }
+}
+
+#Preview {
+    ZZAchievementsView()
+}
