@@ -1,3 +1,10 @@
+//
+//  CPLinks.swift
+//  Zabka
+//
+//
+
+
 import SwiftUI
 
 class CPLinks {

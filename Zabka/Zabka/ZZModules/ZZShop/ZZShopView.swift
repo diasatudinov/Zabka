@@ -72,11 +72,12 @@ struct ZZShopView: View {
         }.frame(maxWidth: .infinity)
             .background(
                 ZStack {
-                    Image(.appBgZZ)
-                        .resizable()
-                        .scaledToFill()
-                        .ignoresSafeArea()
-                    
+                    if let item = viewModel.currentBgItem {
+                        Image(item.image)
+                            .resizable()
+                            .scaledToFill()
+                            .ignoresSafeArea()
+                    }
                     
                 }
             )

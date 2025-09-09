@@ -1,3 +1,10 @@
+//
+//  AppDelegate.swift
+//  Zabka
+//
+//
+
+
 import UIKit
 
 class AppDelegate: UIResponder, UIApplicationDelegate {

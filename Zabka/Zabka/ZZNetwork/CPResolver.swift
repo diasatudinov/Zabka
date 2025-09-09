@@ -1,3 +1,10 @@
+//
+//  CPResolver.swift
+//  Zabka
+//
+//
+
+
 import Foundation
 
 class CPResolver: NSObject, URLSessionTaskDelegate {

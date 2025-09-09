@@ -1,3 +1,10 @@
+//
+//  CPRoot.swift
+//  Zabka
+//
+//
+
+
 import SwiftUI
 
 struct CPRoot: View {
@@ -13,9 +20,9 @@ struct CPRoot: View {
             } else {
                 VStack {
                     if isLoading {
-                        CPLoaderView()
+                        ZZLoaderView()
                     } else {
-                        CPMenuView()
+                        ZZMenuView()
                             .onAppear {
                                 AppDelegate.orientationLock = .landscape
                                 setOrientation(.landscapeRight)

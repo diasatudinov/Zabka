@@ -8,9 +8,12 @@ import SwiftUI
 
 @main
 struct ZabkaApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
-    }
-}
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+
+      var body: some Scene {
+          WindowGroup {
+              CPRoot()
+                  .preferredColorScheme(.light)
+          }
+      }
+  }

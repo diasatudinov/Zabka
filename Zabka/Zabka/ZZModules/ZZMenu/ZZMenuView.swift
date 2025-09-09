@@ -112,7 +112,7 @@ struct ZZMenuView: View {
                 }
             )
             .fullScreenCover(isPresented: $showGame) {
-               // CPLevelSelectView()
+                LevelPickerView()
             }
             .fullScreenCover(isPresented: $showAchievement) {
                 ZZAchievementsView()
