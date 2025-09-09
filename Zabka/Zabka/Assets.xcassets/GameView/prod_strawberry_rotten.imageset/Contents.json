@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "prod_strawberry_rotten.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

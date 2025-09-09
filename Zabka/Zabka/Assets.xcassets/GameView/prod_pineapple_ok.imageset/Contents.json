@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "prod_pineapple_ok.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

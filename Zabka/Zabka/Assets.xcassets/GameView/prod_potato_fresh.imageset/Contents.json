@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "prod_potato_fresh.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

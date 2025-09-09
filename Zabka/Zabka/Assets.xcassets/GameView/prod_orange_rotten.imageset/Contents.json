@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "prod_orange_rotten.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
